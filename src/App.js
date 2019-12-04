@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import { messaging } from "./init-fcm";
 import logo from './logo.svg';
 import './App.css';
 
@@ -7,6 +8,21 @@ let secondImage = 'http://bit.ly/2YagcST';
 let thirdImage = 'https://cnn.it/2P5W93V';
 
 function App() {
+  useEffect(()=> { 
+
+async componentDidMount =>{
+  messaging.requestPermission()
+    .then(async function() {
+const token = await messaging.getToken();
+    })
+    .catch(function(err) {
+      console.log("Unable to get permission to notify.", err);
+    });
+  navigator.serviceWorker.addEventListener("message", (message) => console.log(message));
+}
+
+  })
+  
   return (
     <div className="App">
    <div className="New">
