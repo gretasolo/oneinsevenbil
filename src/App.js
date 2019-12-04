@@ -3,6 +3,7 @@ import { messaging } from "./init-fcm";
 import logo from './logo.svg';
 import './App.css';
 
+
 let firstImage = 'http://bit.ly/2rPkZgq';
 let secondImage = 'http://bit.ly/2YagcST';
 let thirdImage = 'https://cnn.it/2P5W93V';
@@ -10,8 +11,7 @@ let thirdImage = 'https://cnn.it/2P5W93V';
 function App() {
   useEffect(()=> { 
 
-async componentDidMount =>{
-  messaging.requestPermission()
+    messaging.requestPermission()
     .then(async function() {
 const token = await messaging.getToken();
     })
@@ -19,9 +19,8 @@ const token = await messaging.getToken();
       console.log("Unable to get permission to notify.", err);
     });
   navigator.serviceWorker.addEventListener("message", (message) => console.log(message));
-}
 
-  })
+  },[])
   
   return (
     <div className="App">

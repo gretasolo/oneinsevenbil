@@ -1,5 +1,12 @@
-//where does this part go?
+importScripts("https://www.gstatic.com/firebasejs/5.9.4/firebase-app.js");
+importScripts("https://www.gstatic.com/firebasejs/5.9.4/firebase-messaging.js");
+firebase.initializeApp({
+	// Project Settings => Add Firebase to your web app
+  messagingSenderId: "1062407524656"
+});
 
+
+// where does this go?
 import ReactDOM from "react-dom";
 import App from "./App";
 if ("serviceWorker" in navigator) {
@@ -17,12 +24,7 @@ ReactDOM.render(document.getElementById("root"));
 //
 
 
-importScripts("https://www.gstatic.com/firebasejs/5.9.4/firebase-app.js");
-importScripts("https://www.gstatic.com/firebasejs/5.9.4/firebase-messaging.js");
-firebase.initializeApp({
-	// Project Settings => Add Firebase to your web app
-  messagingSenderId: "1062407524656"
-});
+
 const messaging = firebase.messaging();
 messaging.setBackgroundMessageHandler(function(payload) {
   const promiseChain = clients
@@ -45,3 +47,23 @@ self.addEventListener('notificationclick', function(event) {
   // do what you want
   // ...
 });
+
+
+
+// If you would like to customize notifications that are received in the
+// background (Web app is closed or not in browser focus) then you should
+// implement this optional method.
+// [START background_handler]
+messaging.setBackgroundMessageHandler(function(payload) {
+    console.log('[firebase-messaging-sw.js] Received background message ', payload);
+    // Customize notification here
+    const notificationTitle = 'Background Message Title';
+    const notificationOptions = {
+      body: 'Background Message body.',
+      icon: '/firebase-logo.png'
+    };
+  
+    return self.registration.showNotification(notificationTitle,
+      notificationOptions);
+  });
+  // [END background_handler]
