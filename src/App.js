@@ -1,7 +1,9 @@
-import React, {useEffect} from 'react';
-import { messaging } from "./init-fcm";
+import React, {useEffect, useState} from 'react';
+import { askForPermissioToReceiveNotifications } from "./init-fcm";
 import logo from './logo.svg';
 import './App.css';
+import firebase from 'firebase';
+
 
 
 let firstImage = 'http://bit.ly/2rPkZgq';
@@ -9,24 +11,27 @@ let secondImage = 'http://bit.ly/2YagcST';
 let thirdImage = 'https://cnn.it/2P5W93V';
 
 function App() {
-  useEffect(()=> { 
 
-    messaging.requestPermission()
-    .then(async function() {
-const token = await messaging.getToken();
+  const [payload, setPayload] = useState();
+
+  useEffect(() => {
+
+    firebase.messaging().onMessage(payload => {
+      console.log("Payload received: ", payload);
+      // alert(payload.notification.body);
+      setPayload(payload);
+
     })
-    .catch(function(err) {
-      console.log("Unable to get permission to notify.", err);
-    });
-  navigator.serviceWorker.addEventListener("message", (message) => console.log(message));
-
-  },[])
+  });
   
   return (
     <div className="App">
    <div className="New">
      <strong><p id="one"> One In Seven Billion</p></strong>
     </div>
+<button onClick ={askForPermissioToReceiveNotifications}>suscribe</button>
+    <p>{payload && payload.notification.body}</p>
+
 
     <div className="Content">
     <div className="flex-container">

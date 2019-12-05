@@ -1,13 +1,41 @@
 
-import * as firebase from "firebase/app";
-import "firebase/messaging";
-const initializedFirebaseApp = firebase.initializeApp({
-// Project Settings => Add Firebase to your web app
-  messagingSenderId: "106240...4524656"
-});
-const messaging = initializedFirebaseApp.messaging();
-messaging.usePublicVapidKey(
-// Project Settings => Cloud Messaging => Web Push certificates
-  "BD6n7ebJqtOxaBS8M7xtBwSxgeZwX1gdS...6HkTM-cpLm8007IAzz...QoIajea2WnP8rP-ytiqlsj4AcNNeQcbes"
-);
-export { messaging };
+import firebase from 'firebase';
+
+export const initializeFirebase = () => {
+  const firebaseConfig = {
+    apiKey: "AIzaSyDx4-HPFS-cZKsV7ixoGjKCseoxWaLX_V0",
+    authDomain: "oneinsevenbil-4f7ad.firebaseapp.com",
+    databaseURL: "https://oneinsevenbil-4f7ad.firebaseio.com",
+    projectId: "oneinsevenbil-4f7ad",
+    storageBucket: "oneinsevenbil-4f7ad.appspot.com",
+    messagingSenderId: "508807738325",
+    appId: "1:508807738325:web:7a34a37564f8349278035c",
+    measurementId: "G-X1BC8811KZ"
+  };
+  
+  firebase.initializeApp(firebaseConfig);
+
+
+
+  // use other service worker
+  // navigator.serviceWorker
+  //   .register('/my-sw.js')
+  //   .then((registration) => {
+  //     firebase.messaging().useServiceWorker(registration);
+  //   });
+}
+
+export const askForPermissioToReceiveNotifications = async () => {
+  try {
+
+    const messaging = firebase.messaging();
+
+    await messaging.requestPermission();
+    const token = await messaging.getToken();
+    console.log('user token: ', token);
+
+    return token;
+  } catch (error) {
+    console.error(error);
+  }
+}
