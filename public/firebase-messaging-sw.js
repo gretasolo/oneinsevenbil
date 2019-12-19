@@ -6,6 +6,7 @@
  firebase.initializeApp({
    'messagingSenderId': '508807738325'
  });
+
  const messaging = firebase.messaging();
 
 // [START background_handler]
@@ -21,7 +22,3 @@ messaging.setBackgroundMessageHandler(function(payload) {
   return self.registration.showNotification(notificationTitle,
     notificationOptions);
 });
-
-
-
-// [END background_handler]

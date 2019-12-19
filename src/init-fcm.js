@@ -1,8 +1,7 @@
-
 import firebase from 'firebase';
 
 export const initializeFirebase = () => {
-  const firebaseConfig = {
+  firebase.initializeApp({
     apiKey: "AIzaSyDx4-HPFS-cZKsV7ixoGjKCseoxWaLX_V0",
     authDomain: "oneinsevenbil-4f7ad.firebaseapp.com",
     databaseURL: "https://oneinsevenbil-4f7ad.firebaseio.com",
@@ -10,22 +9,11 @@ export const initializeFirebase = () => {
     storageBucket: "oneinsevenbil-4f7ad.appspot.com",
     messagingSenderId: "508807738325",
     appId: "1:508807738325:web:7a34a37564f8349278035c",
-    measurementId: "G-X1BC8811KZ"
-  };
-  
-  firebase.initializeApp(firebaseConfig);
-
-
-
-  // use other service worker
-  // navigator.serviceWorker
-  //   .register('/my-sw.js')
-  //   .then((registration) => {
-  //     firebase.messaging().useServiceWorker(registration);
-  //   });
+    measurementId: "G-X1BC8811KZ",
+  });
 }
 
-export const askForPermissioToReceiveNotifications = async () => {
+export const askForPermissionToReceiveNotifications = async () => {
   try {
 
     const messaging = firebase.messaging();
@@ -37,5 +25,5 @@ export const askForPermissioToReceiveNotifications = async () => {
     return token;
   } catch (error) {
     console.error(error);
-  }
+  };
 }

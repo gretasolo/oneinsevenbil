@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { askForPermissioToReceiveNotifications } from "./init-fcm";
+import { askForPermissionToReceiveNotifications } from "./init-fcm";
 import logo from './logo.svg';
 import './App.css';
 import firebase from 'firebase';
@@ -18,54 +18,63 @@ function App() {
 
     firebase.messaging().onMessage(payload => {
       console.log("Payload received: ", payload);
-      // alert(payload.notification.body);
+      //alert(payload.notification.body);
       setPayload(payload);
 
     })
   });
   
   return (
-    <div className="App">
-   <div className="New">
-     <strong><p id="one"> One In Seven Billion</p></strong>
-    </div>
-<button onClick ={askForPermissioToReceiveNotifications}>suscribe</button>
-    <p>{payload && payload.notification.body}</p>
-
-
-    <div className="Content">
-    <div className="flex-container">
-    <p id="twoshift">
-    <span class="twodate">Sep.30, 2019</span><br></br>
-    <span class="shifty">ENVIRONMENT</span><br></br>
-    <span class="title">Greta Thurenburg Sets Sail With 80 Year Old Sailor</span><br></br>
-    <span class="conty">A woman who's been sailing her whole life was set to visit her grandkids in Greece this winter, but when she learned that the infamous Greta T needed a lift to Madrid for the Climate Conference, she prolonged her trip to save 2000 tons of carbon. </span><br></br>
-    <span class="authy">By LILY ROSE</span> </p> 
-    <img class= "kod" src ={firstImage} alt="kod" width="300" height="200" />
+  <div className="App">
+  <div className="New">
+    <img src ='https://i.ibb.co/nmBrw6H/one.png' ></img>
+  </div>
+  <div id='center'>
+    <p id = 'cent'>Receive a daily news story about someone doing something selfless in the world <br></br>to remind yourself that its not all about you!</p>
+    <button id='button' button onClick={askForPermissionToReceiveNotifications}>SUBSCRIBE</button>
+  </div>
+  
+  <div className="Content">
+  <div className="flex-container">
     
-    
-   <hr></hr>
+  <div class='row'>
+  <div class='column left'>
+    <img src ={firstImage} alt="kod" width="300" height="200"/>
+  </div>
+  <div>
+    <span class="date">May 31, 2018</span><br></br>
+    <span class="shifty">SOCIETY</span><br></br>
+    <span class="title">Eight-year-old boy selflessly helps elderly woman struggling to climb stairs</span><br></br>
+    <span class="conty"> Maurice Adams Jr. was in the car with his mom in Milledgeville, Georgia, this week when he spotted a senior he didn't know struggling at an intersection. So, he did what any perfect gentleman would do: he got out to help her.</span> <a href="https://www.ctvnews.ca/lifestyle/eight-year-old-boy-selflessly-helps-elderly-woman-struggling-to-climb-stairs-1.3953446"> READ THE FULL STORY</a><br></br>
+    <span class="authy">By MATTHEW TALBOT</span>
+  </div>
+  </div>
 
-    <p id="threecontent">
-    <span class="threedate">Aug.30, 2019</span><br></br>
-    <span class="shiftyy">SOCIETY</span><br></br>
-    <span class="titlethree">A Mama's Boy</span><br></br>
-    <span class="contythree">Twenty four year old Johny decided his paintings needed to be out of the gallery and in the home of his mothers' students at the homeless shelter.</span><br></br>
-    <span class="authythree">By BEN SMITH</span> </p>
-    <img class= "plane" src ={secondImage} alt="plane" width="300" height="200"/>
-   
+  <div class='row'>
+  <div class='column left'>
+    <img src ={secondImage} alt="plane" width="300" height="200"/>
+  </div>
+  <div>
+    <span class="date">Aug.30, 2019</span><br></br>
+    <span class="shifty">SOCIETY</span><br></br>
+    <span class="title">A Mama's Boy</span><br></br>
+    <span class="conty">Twenty four year old Johny decided his paintings needed to be out of the gallery and in the home of his mothers' students at the homeless shelter.</span> <a href="link.com"> READ THE FULL STORY</a><br></br>
+    <span class="authy">By BEN SMITH</span>
+  </div>
+  </div>
 
-  <hr></hr>
-
-    <p id="fourcontent">
-    <span class="fourdate">Oct.29, 2019</span><br></br>
-    <span class="shiftyy">UNIVERSITY</span><br></br>
-    <span class="titlefour">University Students Put Down Their Resumes and Pick Up The Rescues</span><br></br>
-    <span class="contyfour">Students moved back their senior recognition party to help out a local organization overwhelmed with an abundance of stray animals needing food and shelter. </span><br></br>
-    <span class="authyfour">By SARAH JOHNSON</span></p>
+  <div class='row'>
+  <div class='column left'>
     <img class= "man" src ={thirdImage} alt="man" width="300" height="200"/>
-
-    <hr></hr>
+  </div>
+  <div>
+    <span class="date">Oct.29, 2019</span><br></br>
+    <span class="shifty">UNIVERSITY</span><br></br>
+    <span class="title">University Students Put Down Their Resumes and Pick Up The Rescues</span><br></br>
+    <span class="conty">Students moved back their senior recognition party to help out a local organization overwhelmed with an abundance of stray animals needing food and shelter.</span> <a href="link.com"> READ THE FULL STORY</a><br></br>
+    <span class="authy">By SARAH JOHNSON</span>
+  </div>
+  </div>
     </div>
    </div>
    </div>

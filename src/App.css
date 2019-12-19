@@ -1,122 +1,126 @@
-@media all and (min-width: 800px) {
-  .kod   { flex: 3 0px; }
-  .man { order: 1; } 
-  .plane    { order: 2; }
-  .conty { order: 3; }
-  .title { order: 4; } }
+@media only screen and (max-width: 500px), (min-width: 800px) {
+.kod   { flex: 3 0px; }
+.man { order: 1; } 
+.plane    { order: 2; }
+.conty { order: 3; }
+.title { order: 4; } }
 
+body {
+  font-family: Georgia, 'Georgia', Times, serif;
+}
+#center {
+text-align: center;
+margin-top: 50px;
+margin-bottom: 0px;
+}
 
+#cent {
+  color: #f4511e;
+  font-size: 25px;
+  
+}
+#button {
+background-color: #f4511e;
+color: white;
+border: none;
+opacity: 1;
+transition: 0.3s;
+cursor: pointer;
+padding: 16px 32px;
+text-align: center;
+font-size: 32px;
+margin: 4px 2px;
+}
+
+#button:hover {
+  opacity: 0.6;
+}
 
 .New {
-  text-align: center;
-  font-family: Georgia, 'Georgia', Times, serif;
-  display: flex;
-  justify-content: center;
-  
+text-align: center;
+font-family: Georgia, 'Georgia', Times, serif;
+display: flex;
+justify-content: center;
+
 }
+
 .kod {
-  display: flex;
-  flex-flow: row wrap;
-  align-self: left;
-
+display: flex;
+flex-flow: row wrap;
+align-self: left;
 }
+
 .plane {
-  display:flex;
+display:flex;
 }
+
 .man{
-  display: flex;
-  position: relative;
-  
+display: flex;
+position: relative;
 }
+
 .Content {
-  display: flex;
-  flex-direction: column;
-  flex-flow: row wrap; 
-  font-family: Georgia, 'Georgia', Times, serif;
-  align-items: flex-start;
-  margin-left: 50px;
-  margin-right: 50px;
-  text-align: center;
-  
-  
+display: flex;
+flex-direction: column;
+flex-flow: row wrap; 
+font-family: Georgia, 'Georgia', Times, serif;
+align-items: flex-start;
+margin-left: 50px;
+margin-right: 50px;
 }
+
 hr {
-  width: 1200px;
-  color: black ;
-  margin-left: 25px;
-  margin-right:25px;
+width: 1200px;
+color: black ;
+}
 
-  }
-  #one {
-    flex: 50%;
-    height: 50px;
-    font-size: 2cm;
-    }
+.date {
+color:gray ;
+font-size: 20px;
+flex: 50%;
+margin: auto;
+text-align: left;
+}
 
-  .twodate {
-  color:gray ;
-  font-size: 20px;
-  flex: 50%;
-  margin: auto;
-  }
-  .shifty {
-    color: black;
-    font-size: 15px;
-    flex: 50%;
-    }
-    .title {
-      color: black;
-      font-size: 40px;
-      text-align: right;
-    }
-  .conty {
-      color:black ;
-      font-size: 25px;
-      text-align: right;
-      flex-flow: row wrap;
+.shifty {
+color: black;
+font-size: 15px;
+flex: 50%;
+}
 
-      
-    }
-  .authy{
-  color:gray;
-  font-size: 20px;
+.title {
+color: black;
+font-size: 36px;
+text-align: left;
+justify-content: left;
+}
+
+.conty {
+color:black ;
+font-size: 20px;
+text-align: left;
+flex-flow: row wrap;
+}
+
+.authy{
+color:gray;
+font-size: 20px;
+text-align: left;
 }    
 
-    .threedate {
-    color:gray;
-    font-size: 20px;
-    flex: 50%;}
+.column {
+  float: left;
+  padding: 10px;
+}
 
-    .titlethree {
-    color: black;
-    font-size: 40px;
-  }
-    .contythree {
-    color: black;
-    font-size: 25px;
-    flex: 50%;}
-
-    .authythree {
-      color: gray;
-      font-size: 20px;
-      flex: 50%;}
-
-    .fourdate {
-    color: gray;
-    font-size: 20px;
-    flex: 50%;}
-
-    .titlefour {
-      color: black;
-      font-size: 40px;
-    }
-
-    .contyfour {
-      color: black; 
-      font-size: 25px;
-      flex: 50%;}
-
-    .authyfour {
-        color:gray ;
-        font-size: 20px;
-        flex: 50%;}
+.left {
+  width: 25%;
+}
+.row {
+  margin: 5%;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
